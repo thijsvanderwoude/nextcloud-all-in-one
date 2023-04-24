@@ -31,12 +31,14 @@
     }
   }
 
-  function disableSpinnerSpinner() {
+  function enableSpinner() {
     document.getElementById('overlay').classList.add('loading');
+    document.getElementById('overlay').focus();
   }
 
   function disableSpinner() {
     document.getElementById('overlay').classList.remove('loading');
+    document.body.focus();
   }
 
   function initForm(form) {
@@ -51,7 +53,7 @@
       xhr.addEventListener('error', () => disableSpinner());
       xhr.open(form.method, form.getAttribute("action"));
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      disableSpinnerSpinner();
+      enableSpinner();
       xhr.send(new URLSearchParams(new FormData(form)));
       event.preventDefault();
     }
